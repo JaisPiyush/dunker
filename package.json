@@ -1,0 +1,26 @@
+{
+  "name": "dunker",
+  "module": "index.ts",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "bun build --target=node ./src/index.ts --outfile=dist/index.js && bun run build:declaration",
+    "build:declaration": "tsc --emitDeclarationOnly --project tsconfig.types.json",
+    "postbuild": "rimraf tsconfig.types.tsbuildinfo",
+    "format": "prettier --write src/*"
+  },
+  "devDependencies": {
+    "@lobehub/lint": "^1.23.4",
+    "@types/bun": "latest",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.7"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "dist/*.js",
+    "dist/*.d.ts"
+  ]
+}
